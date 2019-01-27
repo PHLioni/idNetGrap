@@ -1,0 +1,243 @@
+#menuTop{
+    width: 105%;
+    padding:10px;
+}
+
+#tituloPage{
+    margin-top:20px;
+    padding:20px;
+    font-family: "Arial";
+}
+
+#chart01{
+    height:70vh;
+    width:75vw;
+    margin-top:5%;
+    margin-left:13%;
+}
+
+#btnChart01{
+    margin-left:33%;
+    background-color: #BEBEBE;
+    border: none;
+    width: 10%;
+    font-size: 100%;
+}
+
+#btnChart01:hover{
+    background-color: #000000;
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 568px) {
+    #btnChart01{
+        width: 30%;
+        margin-left:38%;
+        font-size: 50%;
+    }
+}
+
+#crtChart01{
+    background: -moz-linear-gradient(top, #CCCCCC, #BC8F8F);
+    background: -webkit-gradient(linear, left top, left bottom, from(#CCCCCC), to(#2F4F4F));
+    border-radius: 20px; box-shadow:0 5px 15px black;
+}
+
+#chart02{
+    height:70vh;
+    width:75vw;
+    margin-top:10%;
+    margin-left:13%;
+}
+
+#btnChart02{
+    margin-left:3%;
+    margin-top:3px;
+    background-color:#BEBEBE;
+    border: none;
+    width: 10%;
+}
+
+#btnChart02:hover{
+    background-color: #000000;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 568px) {
+    #btnChart02{
+        width: 30%;
+        margin-left:38%;
+        font-size: 50%;
+    }
+}
+
+#crtChart02{
+    background: -moz-linear-gradient(top, #2F4F4F, #2F4F4F);
+    background: -webkit-gradient(linear, left top, left bottom, from(#CCCCCC), to(#2F4F4F));
+    border-radius: 20px; box-shadow:0 5px 15px black;
+}
+
+.tabelaCrt{
+    width:100%;
+    margin-top:10%;
+    margin-left:1%;
+    margin-bottom:-16%;
+    overflow: auto;
+}
+
+.tabelaCrt2{
+    width:100%;
+    margin-top:20%;
+    margin-left:1%;
+    margin-bottom:-16%;
+    overflow: auto;
+}
+
+.tabelaCrtAgenda{
+    width:110%;
+    margin-top:10%;
+    margin-left:-5%;
+    margin-bottom:-16%;
+    overflow: auto;
+}
+
+.headTable{
+    width:1%;
+    background-color:#0000CD;
+}
+
+.headTableLeste{
+    background-color: #4169E1;
+    color:#ffffff;
+}
+
+.headTableAgenda{
+    width:1%;
+    background-color:#D3D3D3;
+    color: #000000;
+}
+
+.headTableAgenda2{
+    background-color: #0000CD;
+    color:#ffffff;
+}
+
+.colunas{
+    width:5%;
+    background-color: #0000CD;
+}
+
+.textoColunas{
+    margin-left:3%;
+    color: #ffffff;
+}
+
+.registros{
+background-color: #0000ff;
+color: #ffffff;
+}
+
+.registros2{
+background-color: #D3D3D3;
+color: #000000;
+}
+
+#textoInserir{
+    margin-top:25px;
+}
+
+#textoInserirSub{
+    margin-top:25px;
+}
+#indice{
+   margin-top:25px;
+   margin-bottom:-2%
+}
+body{
+    background-color: #F0F8FF;
+}
+
+
+#btnChart03{
+    margin-left:60%;
+    margin-top:-65px;
+    background-color:#BEBEBE;
+    border: none;
+    width: 10%;
+}
+
+#btnChart03:hover{
+    background-color: #000000;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 568px) {
+    #btnChart03{
+        width: 30%;
+        margin-left:38%;
+        margin-top:1px;
+        font-size: 50%;
+    }
+}
+
+#btnChart04{
+    margin-left:0%;
+    margin-top:-820px;
+    background-color:#BEBEBE;
+    border: none;
+    width: 10%;
+}
+
+#btnChart04:hover{
+    background-color: #000000;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 568px) {
+    #btnChart04{
+        width: 30%;
+        margin-left:38%;
+        margin-top:1px;
+        font-size: 50%;
+    }
+}
+
+#btnChart05{
+    margin-left:0%;
+    margin-top:-820px;
+    background-color:#BEBEBE;
+    border: none;
+    width: 10%;
+}
+
+#btnChart05:hover{
+    background-color: #000000;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 568px) {
+    #btnChart05{
+        width: 30%;
+        margin-left:38%;
+        margin-top:1px;
+        font-size: 50%;
+    }
+}
+
+
+.img01{
+    width:70%;
+    margin-left:15%;
+    margin-top:15%;
+}
+
+
+@media only screen and (min-width: 1440px) and (max-width: 900px) {
+    #btnChart04{
+        width: 30%;
+        margin-left:50%;
+        margin-top:700px;
+        font-size: 50%;
+    }
+}
+
+#imgTela02{
+    width:100%;
+    margin-top:10%;
+}

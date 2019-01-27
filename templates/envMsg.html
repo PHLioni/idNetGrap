@@ -1,0 +1,283 @@
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% load static %}
+
+{% block title %} ENVIO DE MENSAGEM {% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="menuTop">
+        <a class="navbar-brand" href="menu" id="menu">MENU</a>
+        <div id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'at1'%}">AT1</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'crt_humano'%}">CRT HUMANO</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'tecCertificado'%}">TEC. CERTIFICADO</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'envMsg'%}">ENVIO DE MENSAGEM</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'nodeCertificado' %}">NODE CERTIFICADO</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'anot' %}">ANOT</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'rreip' %}">RREIP</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'dispMovel' %}">DISP MOVEL</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'dispAgenda' %}">DISP AGENDA</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'logout'%}">SAIR</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+
+<div class="shadow-lg p-1 mb-5 bg-white rounded">
+    <h1 align="center" class="display-4" id="tituloPage">ENVIO DE MENSAGEM</h1>
+</div>
+<!---
+<a class="btn btn-primary" href="{% url 'inserir_crt_humano' %}" id="btnChart01">INSERIR MENSAL</a>
+<a class="btn btn-primary" id="btnChart02" href="{% url 'inserir_crthumano_SPLeste' %}">INSERIR DIARIO</a>
+<a class="btn btn-primary" id="btnChart03" href="{% url 'inserir_imagem'%}">INSERIR IMAGENS</a>
+-->
+
+<!--
+CRT HUMANO MENSAL
+-->
+<div class="chart-container" id="chart01" url-ponto="{% url 'api-data' %}">
+
+
+    <canvas id="crtChart01"></canvas>
+    <script>
+        var ponto = 'api/chart/data'
+        var dadosP = []
+        var dadosSaoJose = []
+        var dadosLeste = []
+        var dadosSantos = []
+        var dadosMeta = []
+        var mes = []
+
+
+        $.ajax({
+            method: "GET",
+            url: ponto,
+            success: function(d){
+                mes = d.msgMesLista
+                dadosP = d.data
+                dadosSaoJose = d.msgSaoJose2
+                dadosLeste = d.msgLeste
+                dadosSantos = d.msgSantos2
+                dadosMeta = d.msgMeta
+
+                var ctx = document.getElementById("crtChart01").getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                    labels: mes,
+
+                    datasets: [{
+
+                    label: 'SPLeste',
+                    data: dadosLeste,
+                     backgroundColor: "rgba(0, 0, 0, 0)",
+                     borderColor: "#0000ff",
+                     fill: false,
+
+                 },{
+                    label: 'Santos',
+                    data: dadosSantos,
+                    backgroundColor: "rgba(0, 0, 0, 0)",
+                    borderColor: "#00FF00",
+                    fill: false,
+
+                 },{
+                    label: 'Sao José',
+                    data: dadosSaoJose,
+
+                    backgroundColor: "rgba(0, 0, 0, 0)",
+                    borderColor: "#FFA500",
+                    fontColor: 'white',
+                    fill: false,
+
+                 },{
+
+                    label: 'Meta',
+                    data: dadosMeta,
+                    backgroundColor: "rgba(0, 0, 0, 0)",
+                    borderColor: "#FFD700",
+                 }]
+                },
+                 options: {
+
+                  layout: {
+            padding: {
+                left: 0,
+                right: 20,
+                top: 0,
+                bottom: 0
+            }
+        },
+
+"animation": {
+
+
+   "duration": 1000,
+
+        onComplete: function () {
+        var ctx = this.chart.ctx;
+        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
+        ctx.fillStyle = "white";
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'alphabetic';
+        ctx.strokeStyle = '000000';
+        ctx.font = '12px Verdana';
+
+
+        this.data.datasets.forEach(function (dataset)
+        {
+            for (var i = 0; i < dataset.data.length; i++) {
+                for(var key in dataset._meta)
+                {
+                    var model = dataset._meta[key].data[i]._model;
+                    ctx.fillText(dataset.data[i] + "%", model.x, model.y - 5);
+                }
+            }
+        });
+    }
+},
+         tooltips: {
+            enable:false,
+
+
+
+        },
+
+
+        scales: {
+            xAxes: [{
+            ticks: {
+                fontColor: 'white',
+                beginAtZero:true
+             },
+                display: true,
+                scaleLabel: {
+                    display: false,
+                             }
+            }],
+
+            yAxes: [{
+             ticks: {
+                fontColor: 'white',
+                beginAtZero:false
+             },
+
+                display: true,
+                scaleLabel: {
+                    display: false,
+
+
+                }
+            }]
+            },
+
+
+                   maintainAspectRatio: false,
+                    title:{
+                        display: true,
+                        fontSize: 25,
+                        fontColor: '#000',
+                        text: 'REGIONAL SP - MENSAL'
+                     },
+
+
+
+    }
+             })
+            },
+            error: function(error_data){
+                console.log("error")
+                console.log(error_data)
+            }
+        })
+
+</script>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+
+
+<div class="container">
+    <div class="tabelaCrt">
+        <table class="table table-bordered table-dark">
+            <thead>
+            <tr align="center" class="bg-primary">
+                <th scope="col" class="headTable">GRUPOS</th>
+                {% for dado in dados %}
+                <th scope="col" class="colunas">
+                    <!---<a href="{% url 'update_regional' dado.id %}" class="textoColunas">--->{{dado.mes}}
+                </th>
+                {% endfor %}
+            </tr>
+
+            <tr align="center">
+                <th scope="row" class="headTable">CAPITAL</th>
+                {% for dado in dados %}
+                <td class="registros">{{ dado.capital}}%</td>
+                {% endfor %}
+            </tr>
+
+            <tr align="center">
+                <th scope="row" class="headTable">OESTE</th>
+                {% for dado in dados %}
+                <td class="registros">{{ dado.oeste }}%</td>
+                {% endfor %}
+            </tr>
+
+            <tr align="center">
+                <th scope="row" class="headTable">CENTRO</th>
+                {% for dado in dados %}
+                <td class="registros">{{ dado.centro }}%</td>
+                {% endfor %}
+            </tr>
+
+            <tr align="center">
+                <th scope="row" class="headTableLeste">LESTE</th>
+                {% for dado in dados %}
+                <td class="registros">{{ dado.leste }}%</td>
+                {% endfor %}
+            </tr>
+
+            </thead>
+        </table>
+    </div>
+</div>
+
+</div>
+
+
+{% endblock %}

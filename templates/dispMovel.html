@@ -1,0 +1,381 @@
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% load static %}
+
+{% block title %} MOVEL {% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="menuTop">
+        <a class="navbar-brand" href="menu" id="menu">MENU</a>
+        <div id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'at1'%}">AT1</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'crt_humano'%}">CRT HUMANO</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'tecCertificado'%}">TEC. CERTIFICADO</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'envMsg'%}">ENVIO DE MENSAGEM</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'nodeCertificado' %}">NODE CERTIFICADO</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'anot' %}">ANOT</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'rreip' %}">RREIP</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'dispMovel' %}">DISP MOVEL</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'dispAgenda' %}">DISP AGENDA</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'logout'%}">SAIR</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+
+<div class="shadow-lg p-1 mb-5 bg-white rounded">
+    <h1 align="center" class="display-4" id="tituloPage">DISPONIBILIDADE MÓVEL - SP LESTE</h1>
+</div>
+<!---
+<a class="btn btn-primary" href="{% url 'inserir_crt_humano' %}" id="btnChart01">INSERIR MENSAL</a>
+<a class="btn btn-primary" id="btnChart02" href="{% url 'inserir_crthumano_SPLeste' %}">INSERIR DIARIO</a>
+<a class="btn btn-primary" id="btnChart03" href="{% url 'inserir_imagem'%}">INSERIR IMAGENS</a>
+-->
+
+<!--
+CRT HUMANO MENSAL
+-->
+<div class="chart-container" id="chart01" url-ponto="{% url 'api-data' %}">
+
+
+    <canvas id="crtChart01"></canvas>
+    <script>
+        var ponto = 'api/chart/data'
+        var dadosP = []
+        var dadosSaoJose = []
+        var dadosLeste = []
+        var dadosSantos = []
+        var mes = []
+        var dadosMeta = []
+        var movelAll = []
+
+
+        $.ajax({
+            method: "GET",
+            url: ponto,
+            success: function(d){
+                movelAll = d.movelAll
+                dadosP = d.data
+                dadosSaoJose = d.movel2g
+                dadosLeste = d.movel3g
+                dadosSantos = d.movel4g
+                dadosMeta = d.movelMeta
+
+                var ctx = document.getElementById("crtChart01").getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                    labels: ['SP_LESTE 2G', 'SP_LESTE 3G', 'SP_LESTE 4G' ],
+
+                    datasets: [{
+
+                        label: 'Meta',
+                    data: [99.30, 99.30, 99.30],
+                    backgroundColor: "rgba(0, 0, 0, 0)",
+                    borderColor: "#FFD700",
+
+                    type: 'line',
+
+                    },{
+
+                    label: '',
+                    data: movelAll,
+                     backgroundColor: "#0000ff",
+                     borderColor: "#0000ff",
+                     fill: false,
+
+
+                 }]
+                },
+                 options: {
+
+                  layout: {
+            padding: {
+                left: 0,
+                right: 20,
+                top: 0,
+                bottom: 0
+            }
+        },
+
+"animation": {
+
+
+   "duration": 1000,
+
+        onComplete: function () {
+        var ctx = this.chart.ctx;
+        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
+        ctx.fillStyle = "white";
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'alphabetic';
+        ctx.strokeStyle = '000000';
+        ctx.font = '12px Verdana';
+
+
+
+        this.data.datasets.forEach(function (dataset)
+        {
+            for (var i = 0; i < dataset.data.length; i++) {
+                for(var key in dataset._meta)
+                {
+                    var model = dataset._meta[key].data[i]._model;
+                    ctx.fillText(dataset.data[i] + "%", model.x, model.y - 5);
+                }
+            }
+        });
+    }
+},
+         tooltips: {
+            enable:false,
+
+
+
+        },
+
+
+        scales: {
+            xAxes: [{
+            ticks: {
+                fontColor: 'white',
+                beginAtZero:true
+             },
+                display: true,
+                scaleLabel: {
+                    display: false,
+                             }
+            }],
+
+            yAxes: [{
+             ticks: {
+                fontColor: 'white',
+                beginAtZero:false,
+                 max: 100,
+                 min: 98,
+                 stepSize: 0.20
+             },
+
+                display: true,
+                scaleLabel: {
+                    display: false,
+
+
+                }
+            }]
+            },
+
+
+                   maintainAspectRatio: false,
+                    title:{
+                        display: true,
+                        fontSize: 25,
+                        fontColor: '#000',
+                        text: 'REGIONAL SP'
+                     },
+
+
+
+    }
+             })
+            },
+            error: function(error_data){
+                console.log("error")
+                console.log(error_data)
+            }
+        })
+    </script>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+
+<div class="chart-container" id="chart02" url-ponto="{% url 'api-data' %}">
+
+
+    <canvas id="crtChart02"></canvas>
+
+    <script>
+        var ponto = 'api/chart/data'
+        var dadoscn12 = []
+        var dadoscn13 = []
+        $.ajax({
+            method: "GET",
+            url: ponto,
+            success: function(d){
+
+                dadoscn12 = d.movelAllCN12
+                dadoscn13 = d.movelAllCN13
+
+
+
+                var ctx = document.getElementById("crtChart02").getContext('2d');
+                var myChart2 = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                    labels: ['SP_LESTE 2G', 'SP_LESTE 3G', 'SP_LESTE 4G' ],
+                         datasets: [{
+
+                        label: 'Meta',
+                    data: [99.30, 99.30, 99.30],
+                    backgroundColor: "rgba(0, 0, 0, 0)",
+                    borderColor: "#FFD700",
+
+                    type: 'line',
+
+                    },{
+
+                    label: 'CN12',
+                    data: dadoscn12,
+                     backgroundColor: "#0000ff",
+                     borderColor: "#0000ff",
+                     fill: false,
+                    },{
+
+                     label: 'CN13',
+                     data: dadoscn13,
+                     backgroundColor: "#FFA500",
+                     borderColor: "#FFA500",
+                     fill: false,
+                 }]
+                },
+                   options: {
+                        layout:
+                        {
+                            padding:
+                            {
+                                left: 0,
+                                right: 20,
+                                top: 0,
+                                bottom: 0
+                            }
+                        },
+
+                        "animation":
+                        {
+                            "duration": 1000,
+
+                            onComplete: function ()
+                            {
+                                var ctx = this.chart.ctx;
+                                ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
+                                ctx.fillStyle = "white";
+                                ctx.textAlign = 'center';
+                                ctx.textBaseline = 'alphabetic';
+                                ctx.strokeStyle = '000000';
+                                ctx.font = '12px Verdana';
+
+                            this.data.datasets.forEach(function (dataset)
+                            {
+                                for (var i = 0; i < dataset.data.length; i++)
+                                    {
+                                        for(var key in dataset._meta)
+                                    {
+                                        var model = dataset._meta[key].data[i]._model;
+                                        ctx.fillText(dataset.data[i]+ "%", model.x, model.y - 5);
+                                    }
+                                }
+                            });
+
+                        }
+                   },
+                        tooltips:
+                        {
+                            enable:false,
+                        },
+
+
+                        scales:
+                        {
+                            xAxes:
+                            [{
+                                ticks:
+                                {
+                                    fontColor: 'white',
+                                    beginAtZero:true
+                                 },
+                                    display: true,
+                                        scaleLabel:
+                                        {
+                                            display: false,
+                                        }
+                            }],
+
+                            yAxes:
+                            [{
+                                ticks:
+                                {
+                                    fontColor: 'white',
+                                    beginAtZero:false,
+                                    max: 100,
+                                    min: 97,
+                                    stepSize: 0.20
+                                },
+                                    display: true,
+                                        scaleLabel:
+                                        {
+                                            display: false,
+                                        }
+                            }]
+                        },
+                        maintainAspectRatio: false,
+                            title:
+                            {
+                                display: true,
+                                fontSize: 25,
+                                fontColor: '#000',
+                                text: 'DISPONIBILIDADE MÓVEL x CN'
+                            },
+                        }
+             })
+            },
+        error: function(error_data)
+        {
+            console.log("error")
+            console.log(error_data)
+        }
+    })
+
+
+
+
+
+
+    </script>
+</div>
+</div>
+
+
+{% endblock %}

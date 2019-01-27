@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% block title %} Menu {% endblock %}
+
+{% block main %}
+<div class="container" style="margin-top:15px;">
+    <p align="right" style="color:blue;"></p>
+</div>
+<h1 style="font-size:10em;" align="center">ID</h1>
+<h5 align="center" style="margin-top:-20px;">Indicadores Diários </h5>
+<h6 align="center" style="margin-top:0%;;">Escolha um dos indicadores abaixo para visualizar os gráficos.</h6>
+<div class="container" align="center" style="margin-top:10px;">
+    <body>
+    <div class="container" style="margin-top:-5%; " align="center">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">MENU</h5>
+                        <a href="{% url 'at1'%}"class="btn btn-lg btn-primary btn-block text-uppercase">AT1</a>
+                        <a href="{% url 'crt_humano'%}" class="btn btn-lg btn-primary btn-block text-uppercase">CRT HUMANO</a>
+                        <a href="{% url 'tecCertificado'%}" class="btn btn-lg btn-primary btn-block text-uppercase">TEC. CERTIFICADO</a>
+                        <a href="{% url 'envMsg'%}" class="btn btn-lg btn-primary btn-block text-uppercase">ENVIO DE MENSAGEM</a>
+                        <a href="{% url 'nodeCertificado' %}" class="btn btn-lg btn-primary btn-block text-uppercase">NODE CERTIFICADO</a>
+                        <a href="{% url 'anot' %}" class="btn btn-lg btn-primary btn-block text-uppercase">ANOT</a>
+                        <a href="{% url 'rreip' %}" class="btn btn-lg btn-primary btn-block text-uppercase">RREIP</a>
+                        <a href="{% url 'dispMovel' %}" class="btn btn-lg btn-primary btn-block text-uppercase">DISPONIBILIDADE MÓVEL</a>
+                        <a href="{% url 'dispAgenda' %}" class="btn btn-lg btn-primary btn-block text-uppercase">DISPONIBILIDADE DE AGENDA</a>
+                        <a href="logout" class="btn btn-lg btn-primary btn-block text-uppercase">SAIR</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</div>
+{% endblock %}

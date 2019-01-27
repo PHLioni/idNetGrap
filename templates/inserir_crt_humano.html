@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% block title %} Adicionar {% endblock %}
+
+{% block main %}
+<div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="menu">MENU</a>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'crt_humano' %}">Gráficos <span class="sr-only">(current)</span></a>
+
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'logout'%}">Sair</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="shadow-lg p-3 mb-5 bg-white rounded">
+    <h1 align="center" class="display-4" id="textoInserir">INSERIR DADOS</h1>
+    <h6 align="center" class="display-6" id="textoInserirSub" >CRT HUMANO</h6>
+</div>
+<h6 align="center" class="display-6" id="indice">MENSAL</h6>
+<form method="POST" enctype="multipart/form-data">
+    <div style="margin-top:3%; width:500px;" class="container">
+        <div class="form-group">
+            {% csrf_token %}
+            <!-- Sempre incluir em formularios, proteção contra manibulação do form, apenas no Django -->
+            {{ form|bootstrap }}
+            <button type="submit" class="btn btn-primary">ENVIAR</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

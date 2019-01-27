@@ -136,9 +136,9 @@ LOGIN_REDIRECT_URL = 'menu'
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
 MEDIA_ROOT = (
-  os.path.join(BASE_DIR, 'media') #pasta media para abrigar os arquivos dos usuários
+  os.path.join(BASE_DIR, 'imagens') #pasta media para abrigar os arquivos dos usuários
 )
 
-MEDIA_URL = '/media/' #endereço para acessar os arquivos
+MEDIA_URL = '/imagens/' #endereço para acessar os arquivos
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

@@ -25,4 +25,4 @@ urlpatterns = [
     path('indicadores/', include(indicadores)),
     path('', auth_views.LoginView.as_view(), name='login'),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

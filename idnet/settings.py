@@ -28,6 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['idnet.herokuapp.com']
+#ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -136,9 +137,9 @@ LOGIN_REDIRECT_URL = 'menu'
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
 MEDIA_ROOT = (
-  os.path.join(BASE_DIR, '') #pasta media para abrigar os arquivos dos usuários
+  os.path.join(BASE_DIR, 'media') #pasta media para abrigar os arquivos dos usuários
 )
 
-MEDIA_URL = '//' #endereço para acessar os arquivos
+MEDIA_URL = '/media/' #endereço para acessar os arquivos
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

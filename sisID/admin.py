@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import CrtHumanoNetMes, CrtHumano_SPLesteNet, imagemCrt, at1Diario, at1Mes, \
-    tecCertificado, envMsg, node, anot, rreip, dispMovel, dispMovelCN, dispAgenda
+    tecCertificado, envMsg, node, anot, rreip, dispMovel, dispMovelCN, dispAgendanet
 
 
 
@@ -22,7 +22,7 @@ admin.site.register(anot)
 admin.site.register(rreip)
 admin.site.register(dispMovel)
 admin.site.register(dispMovelCN)
-admin.site.register(dispAgenda)
+admin.site.register(dispAgendanet)
 
 
 

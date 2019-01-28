@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from .models import CrtHumanoNetMes, CrtHumano_SPLesteNet, imagemCrt, \
-    at1Diario, at1Mes, tecCertificado, envMsg, node, anot, rreip, dispMovel,dispMovelCN, dispAgenda
+    at1Diario, at1Mes, tecCertificado, envMsg, node, anot, rreip, dispMovel,dispMovelCN, dispAgendanet
 
 
 
@@ -86,6 +86,6 @@ class movelCNForm(ModelForm):
 
 class agendaForm(ModelForm):
     class Meta:
-        model = dispAgenda
+        model = dispAgendanet
         fields = ['santos', 'bertioga', 'cubatao', 'guaruja', 'praiaGrande', 'saoVicente', 'saoJose', 'jacarei',
                   'cacapava', 'pinda', 'taubate', 'vale', 'tremembe', 'mongagua']

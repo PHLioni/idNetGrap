@@ -242,7 +242,7 @@ class dispMovelCN(models.Model):
 
 #DISP AGENDA--------------------------------------------------
 
-class dispAgenda(models.Model):
+class dispAgendanet(models.Model):
     santos = models.DecimalField(max_digits=5, decimal_places=2)
     bertioga = models.DecimalField(max_digits=5, decimal_places=2)
     cubatao = models.DecimalField(max_digits=5, decimal_places=2)

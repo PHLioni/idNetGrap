@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from django.contrib.auth.decorators import login_required
 from .models import CrtHumanoNetMes, CrtHumano_SPLesteNet, imagemCrt, at1Diario, at1Mes, tecCertificado,\
-    envMsg, node, anot, rreip, dispMovel, dispMovelCN, dispAgenda
+    envMsg, node, anot, rreip, dispMovel, dispMovelCN, dispAgendanet
 from .forms import RegionalForm, RegionalForm_SPLeste, fotosCrtForm
 from datetime import datetime, date
 from django.http import JsonResponse
@@ -165,7 +165,7 @@ def movel(request):
 #DISP AGENDA
 @login_required
 def agenda(request):
-    dados = dispAgenda.objects.all()
+    dados = dispAgendanet.objects.all()
     return render(request, 'dispAgenda.html', {'dados': dados})
 
 #API REST PARA COSUMO DOS DADOS

@@ -157,7 +157,7 @@ CRT HUMANO MENSAL
                 for(var key in dataset._meta)
                 {
                     var model = dataset._meta[key].data[i]._model;
-                    ctx.fillText(dataset.data[i] + "%", model.x, model.y - 5);
+                    ctx.fillText(dataset.data[i], model.x, model.y - 5);
                 }
             }
         });
@@ -247,35 +247,35 @@ CRT HUMANO MENSAL
             <tr align="center">
                 <th scope="row" class="headTable">REGIONAL SP</th>
                 {% for dado in dados %}
-                <td class="registros">{{ dado.regional}}%</td>
+                <td class="registros">{{ dado.regional}}</td>
                 {% endfor %}
             </tr>
 
             <tr align="center">
                 <th scope="row" class="headTable">CAPITAL</th>
                 {% for dado in dados %}
-                <td class="registros">{{ dado.capital}}%</td>
+                <td class="registros">{{ dado.capital}}</td>
                 {% endfor %}
             </tr>
 
             <tr align="center">
                 <th scope="row" class="headTable">OESTE</th>
                 {% for dado in dados %}
-                <td class="registros">{{ dado.oeste }}%</td>
+                <td class="registros">{{ dado.oeste }}</td>
                 {% endfor %}
             </tr>
 
             <tr align="center">
                 <th scope="row" class="headTable">CENTRO</th>
                 {% for dado in dados %}
-                <td class="registros">{{ dado.centro }}%</td>
+                <td class="registros">{{ dado.centro }}</td>
                 {% endfor %}
             </tr>
 
             <tr align="center">
                 <th scope="row" class="headTableLeste">LESTE</th>
                 {% for dado in dados %}
-                <td class="registros">{{ dado.leste }}%</td>
+                <td class="registros">{{ dado.leste }}</td>
                 {% endfor %}
             </tr>
 
@@ -298,14 +298,14 @@ CRT HUMANO MENSAL
             <tr align="center">
                 <th scope="row" class="headTable">CLUSTER BAIXADA</th>
                 {% for dado in dados %}
-                <td class="registros">{{ dado.santos}}%</td>
+                <td class="registros">{{ dado.santos}}</td>
                 {% endfor %}
             </tr>
 
             <tr align="center">
                 <th scope="row" class="headTable">CLUSTER SÃO JOSÉ</th>
                 {% for dado in dados %}
-                <td class="registros">{{ dado.sao_jose }}%</td>
+                <td class="registros">{{ dado.sao_jose }}</td>
                 {% endfor %}
             </tr>
 

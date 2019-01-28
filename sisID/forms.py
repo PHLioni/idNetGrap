@@ -88,4 +88,4 @@ class agendaForm(ModelForm):
     class Meta:
         model = dispAgenda
         fields = ['santos', 'bertioga', 'cubatao', 'guaruja', 'praiaGrande', 'saoVicente', 'saoJose', 'jacarei',
-                  'cacapava', 'pinda', 'taubate', 'vale']
+                  'cacapava', 'pinda', 'taubate', 'vale', 'tremembe', 'mongagua']

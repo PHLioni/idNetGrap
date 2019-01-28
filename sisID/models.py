@@ -255,6 +255,8 @@ class dispAgenda(models.Model):
     pinda = models.DecimalField(max_digits=5, decimal_places=2)
     taubate = models.DecimalField(max_digits=5, decimal_places=2)
     vale = models.DecimalField(max_digits=5, decimal_places=2)
+    tremembe = models.DecimalField(max_digits=5, decimal_places=2)
+    mongagua = models.DecimalField(max_digits=5, decimal_places=2)
     data = models.CharField(max_length=15)
 
     def save(self, force_insert=False, force_update=False):

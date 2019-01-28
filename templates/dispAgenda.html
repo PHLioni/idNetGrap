@@ -187,6 +187,30 @@
                 {% endfor %}
             </tr>
 
+
+            <tr align="center" class="bg-primary">
+                <th scope="col" class="headTableAgenda2">CIDADES GPON</th>
+                {% for dado in dados %}
+                <th scope="col" class="colunas">
+                    <!---<a href="{% url 'update_regional' dado.id %}" class="textoColunas">{{dado.data}}--->
+                </th>
+                {% endfor %}
+            </tr>
+
+                 <tr align="center">
+                <th scope="row" class="headTableAgenda">TREMEMBÉ</th>
+                {% for dado in dados %}
+                <td class="registros2">{{ dado.tremembe }}</td>
+                {% endfor %}
+            </tr>
+
+                 <tr align="center">
+                <th scope="row" class="headTableAgenda">MONGAGUÁ</th>
+                {% for dado in dados %}
+                <td class="registros2">{{ dado.mongagua }}</td>
+                {% endfor %}
+            </tr>
+
             </thead>
         </table>
     </div>

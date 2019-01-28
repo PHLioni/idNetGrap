@@ -275,6 +275,36 @@ CRT HUMANO MENSAL
             </thead>
         </table>
     </div>
+<div class="tabelaCrt2">
+        <table class="table table-bordered table-dark">
+            <thead>
+            <tr align="center" class="bg-primary">
+                <th scope="col" class="headTable">SP LESTE</th>
+                {% for dado in dados %}
+                <th scope="col" class="colunas">
+                    <!---<a href="{% url 'update_regional' dado.id %}" class="textoColunas">-->{{dado.mes}}
+                </th>
+                {% endfor %}
+            </tr>
+
+            <tr align="center">
+                <th scope="row" class="headTable">CLUSTER BAIXADA</th>
+                {% for dado in dados %}
+                <td class="registros">{{ dado.santos}}</td>
+                {% endfor %}
+            </tr>
+
+            <tr align="center">
+                <th scope="row" class="headTable">CLUSTER SÃO JOSÉ</th>
+                {% for dado in dados %}
+                <td class="registros">{{ dado.sao_jose }}</td>
+                {% endfor %}
+            </tr>
+
+            </thead>
+        </table>
+    </div>
+
 </div>
 
 </div>

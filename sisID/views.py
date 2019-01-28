@@ -392,6 +392,7 @@ class DadosGrafico(APIView):
             'listaSaoJoseDia': listaSaoJoseDia,
             'listaMeta': listaMeta,
 
+            'at1Dados': at1Dados,
             'at1Leste': at1Leste,
             'at1Santos': at1Santos2,
             'at1SaoJose': at1taSaoJose2,

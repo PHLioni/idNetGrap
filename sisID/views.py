@@ -382,7 +382,7 @@ class DadosGrafico(APIView):
 
 
 
-        d = {'at1Data': listaDados,
+        d = {'data': listaDados,
             'mesLeste': listaLeste,
             'mesSantos': listaSantos2,
             'mesSaoJose': listaSaoJose2,

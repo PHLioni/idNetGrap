@@ -473,7 +473,7 @@ CRT HUMANO MENSAL
 <div class="img01">
     {% for dado in imagem01 %}
 
-    <img style="width:100%; margin-left:0%;" src="{{ dado.photo01.url}}">
+    <img style="width:100%; margin-left:0%; border: 2px solid black;" src="{{ dado.photo01.url}}">
     <!--<a class="btn btn-primary" href="{% url 'deletarImagem01' dado.id %}" id="btnChart04">DELETAR IMAGEM</a>-->
 
      <img id="imgTela02" src="{{ dado.photo02.url}}">

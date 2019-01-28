@@ -261,7 +261,7 @@ class dispAgendanet(models.Model):
 
     def save(self, force_insert=False, force_update=False):
 
-        super(dispAgenda, self).save(force_insert, force_update)
+        super(dispAgendanet, self).save(force_insert, force_update)
 
     def __str__(self):
         return 'Data: ' + ' ' + str(self.data)

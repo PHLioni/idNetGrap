@@ -271,10 +271,10 @@ class DadosGrafico(APIView):
 
         #AT1----------------------------------------
 
-        dados_spleste = at1Diario.objects.all()
+        dados_at1 = at1Diario.objects.all()
         format = '%m/%d/%Y'
-        for data_spleste in dados_spleste:
-            dataGeral = data_spleste.data_nota
+        for data_at1 in dados_at1:
+            dataGeral = data_at1.data_nota
             at1Dados.append(datetime.strftime(dataGeral, format))
             at1Dados.sort()
 

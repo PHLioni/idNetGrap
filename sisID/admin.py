@@ -8,7 +8,7 @@ class at1MesAdmin(admin.ModelAdmin):
     list_display = ['mes', 'regional', 'capital', 'oeste', 'centro', 'leste','santos', 'sao_jose', 'meta']
 
 class at1DiarioAdmin(admin.ModelAdmin):
-    list_display = ['leste', 'santos', 'sao_jose']
+    list_display = ['data_nota', 'leste', 'santos', 'sao_jose']
 
 admin.site.register(at1Mes, at1MesAdmin)
 admin.site.register(at1Diario, at1DiarioAdmin)
